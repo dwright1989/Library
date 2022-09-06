@@ -55,6 +55,7 @@ function getLibrary(){
         let haveRead = document.createElement("p");
         if(item.read){
             haveRead.innerHTML  = "read";
+            bookDiv.classList.add("read");
         }else{
             haveRead.innerHTML  = "not read";
         }

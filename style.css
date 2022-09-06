@@ -29,20 +29,23 @@ h1{
     background-color: var(--tertiary-color);
     color: var(--main-color);
     box-shadow: 5px 5px 5px var(--main-color); 
+    margin-bottom: 5rem;
 }
 
 #books{
     display: grid;
+    max-width: 80%;
     background-color: var(--secondary-color);
     grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    margin: 5rem;
-    
+    grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+    gap: 1rem;
+    justify-content: center;
+    margin: auto;
 }
 
 .book{
-    width: 50%;
-    background-color: var(--tertiary-color);
+    width: 88%;
+    background-color: var(--added-color);
     color: var(--main-color);
     font-family: 'Noto Sans JP', sans-serif;
     padding: 1rem;
@@ -54,4 +57,9 @@ h1{
 h2{
     text-align: center;
     font-family: 'Berkshire Swash', cursive;
+    text-decoration: underline;
+}
+
+.read{
+    background-color: var(--tertiary-color);
 }
