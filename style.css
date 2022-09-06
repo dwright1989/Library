@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Noto+Sans+JP&display=swap');
+
+html, body, div, h1{
+    margin: 0;
+    font-family: 'Berkshire Swash', cursive;
+   /* font-family: 'Noto Sans JP', sans-serif;*/
+   
+}
+
+body{
+    background-color: var(--secondary-color);
+}
+
+:root{
+    --main-color: #0C0B0B;
+    --secondary-color: #A0A6AC;
+    --tertiary-color: #EE197F;
+    --added-color: #54EF46;
+    
+}
+
+h1{
+    text-align: center;
+    padding: 1rem;
+    font-size: 3.5rem;
+}
+
+#header{
+    background-color: var(--tertiary-color);
+    color: var(--main-color);
+    box-shadow: 5px 5px 5px var(--main-color); 
+}
+
+#books{
+    display: grid;
+    background-color: var(--secondary-color);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    margin: 5rem;
+    
+}
+
+.book{
+    width: 50%;
+    background-color: var(--tertiary-color);
+    color: var(--main-color);
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 5px 5px 5px var(--main-color); 
+}
+
+h2{
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+}
