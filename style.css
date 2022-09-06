@@ -70,3 +70,70 @@ h2{
 .read{
     background-color: var(--tertiary-color);
 }
+
+input.large{
+    width: 2rem;
+    height: 2rem;
+}
+
+/* ------Modal ------ */
+
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: var(--secondary-color);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    width: 25rem;
+    box-shadow: 5px 5px 5px var(--main-color); 
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #formFields{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    gap: 2rem;
+  }
+
+  #submitBtn{
+      display: flex;
+      margin: auto;
+      background-color: var(--tertiary-color);
+      font-family: 'Berkshire Swash', cursive;
+      border-radius: 5px;
+      border: 1px solid var(--main-color);
+      font-size: 2rem;
+      width: 10rem;
+      justify-content: center;
+  }
