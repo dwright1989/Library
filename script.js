@@ -107,6 +107,14 @@ function addBookToDOM(book, index){
         haveRead.innerHTML  = "not read";
     }
 
+    // Create DIV for the toggle
+
+    let toggleDIV = document.createElement("div");
+    toggleDIV.id = "toggleDIV";
+    let readLabel = document.createElement("span");
+    readLabel.innerHTML = "Read?";
+    
+
     let inputToggle = document.createElement("input");
     inputToggle.id = "switch" + index;
     inputToggle.classList.add("checkbox");
@@ -116,19 +124,19 @@ function addBookToDOM(book, index){
     labelToggle.classList.add("toggle");
     labelToggle.htmlFor = "switch" + index;
 
-    let para = document.createElement("p");
-    para.innerHTML = "Read      Not Read";
-    labelToggle.appendChild(para);
+    toggleDIV.appendChild(readLabel);
+    toggleDIV.appendChild(inputToggle);
+    toggleDIV.appendChild(labelToggle);
 
 
+    // Add all elements to the book div
 
     bookDiv.appendChild(deleteImage);
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
     bookDiv.appendChild(haveRead);
-    bookDiv.appendChild(inputToggle);
-    bookDiv.appendChild(labelToggle);
+    bookDiv.appendChild(toggleDIV);
     booksDiv.appendChild(bookDiv);
 }
 
