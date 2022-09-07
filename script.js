@@ -56,10 +56,7 @@ var btn = document.getElementById("add-book-btn");
 var span = document.getElementsByClassName("close")[0];
 var submitBtn = document.getElementById("submitBtn");
 
-btn.onclick = function() {
-  modal.style.display = "block";
-  document.getElementById('myForm').reset();
-}
+
 
 span.onclick = function() {
   modal.style.display = "none";
@@ -122,7 +119,7 @@ function deleteBook(index){
     // delete from the library array
     deleteFromLibrary(index);
     // delete from the DOM
-    //deleteFromDOM(index);
+    getLibrary();
 }
 
 function deleteFromLibrary(index){
@@ -136,5 +133,9 @@ function resetLibraryDOM(){
     let addBookButton = document.createElement("button");
     addBookButton.id = "add-book-btn";
     addBookButton.innerText = "+";
+    addBookButton.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById('myForm').reset();
+    }
     booksDIV.appendChild(addBookButton);
 }
