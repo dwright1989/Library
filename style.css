@@ -138,3 +138,8 @@ input.large{
       width: 10rem;
       justify-content: center;
   }
+
+  .delete{
+      float: right;
+      padding-bottom: 2rem;
+  }

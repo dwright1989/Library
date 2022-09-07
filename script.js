@@ -26,6 +26,7 @@ let book6 = new Book("Misery", "Stephen King", 619, true);
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
+  return myLibrary.length-1;
 }
 
 addBookToLibrary(book1);
@@ -38,7 +39,7 @@ addBookToLibrary(book6);
 
 function getLibrary(){
     myLibrary.forEach(function (item, index) {
-        addBookToDOM(item);
+        addBookToDOM(item, index);
     });
 }
 
@@ -73,15 +74,20 @@ window.onclick = function(event) {
 function addBook(form){
     modal.style.display="none";
     let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
-    addBookToLibrary(book);
-    addBookToDOM(book);
+    let index = addBookToLibrary(book);
+    addBookToDOM(book, index);
 }
 
-function addBookToDOM(book){
+function addBookToDOM(book, index){
     let booksDiv = document.getElementById("books");
     let bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
 
+    let deleteImage = document.createElement("img");
+    deleteImage.src = "images/delete.png";
+    deleteImage.classList.add("delete");
+    deleteImage.id=index;
+    
     let bookTitle = document.createElement("h2");
     bookTitle.innerHTML  = book.title;
 
@@ -98,6 +104,7 @@ function addBookToDOM(book){
     }else{
         haveRead.innerHTML  = "not read";
     }
+    bookDiv.appendChild(deleteImage);
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
