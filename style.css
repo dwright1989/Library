@@ -103,7 +103,7 @@ input.large{
   
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: var(--main-color);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -111,7 +111,7 @@ input.large{
   
   .close:hover,
   .close:focus {
-    color: black;
+    color: var(--tertiary-color);
     text-decoration: none;
     cursor: pointer;
   }

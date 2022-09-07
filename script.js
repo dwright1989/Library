@@ -38,37 +38,13 @@ addBookToLibrary(book6);
 
 function getLibrary(){
     myLibrary.forEach(function (item, index) {
-        console.log(item, index);
-        let booksDiv = document.getElementById("books");
-        let bookDiv = document.createElement("div");
-        bookDiv.classList.add("book");
-
-        let bookTitle = document.createElement("h2");
-        bookTitle.innerHTML  = item.title;
-
-        let bookAuthor = document.createElement("h4");
-        bookAuthor.innerHTML  = "Author: " + item.author;
-
-        let bookPages = document.createElement("p");
-        bookPages.innerHTML  = "Pages: " + item.pages;
-
-        let haveRead = document.createElement("p");
-        if(item.read){
-            haveRead.innerHTML  = "read";
-            bookDiv.classList.add("read");
-        }else{
-            haveRead.innerHTML  = "not read";
-        }
-        
-        bookDiv.appendChild(bookTitle);
-        bookDiv.appendChild(bookAuthor);
-        bookDiv.appendChild(bookPages);
-        bookDiv.appendChild(haveRead);
-        booksDiv.appendChild(bookDiv);
+        addBookToDOM(item);
     });
 }
 
 getLibrary();
+
+
 
 /*-------- Modal -------*/
 
@@ -76,6 +52,7 @@ getLibrary();
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("add-book-btn");
 var span = document.getElementsByClassName("close")[0];
+var submitBtn = document.getElementById("submitBtn");
 
 btn.onclick = function() {
   modal.style.display = "block";
@@ -90,4 +67,39 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+
+function addBook(form){
+    modal.style.display="none";
+    let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.value);
+    addBookToLibrary(book);
+    addBookToDOM(book);
+}
+
+function addBookToDOM(book){
+    let booksDiv = document.getElementById("books");
+    let bookDiv = document.createElement("div");
+    bookDiv.classList.add("book");
+
+    let bookTitle = document.createElement("h2");
+    bookTitle.innerHTML  = book.title;
+
+    let bookAuthor = document.createElement("h4");
+    bookAuthor.innerHTML  = "Author: " + book.author;
+
+    let bookPages = document.createElement("p");
+    bookPages.innerHTML  = "Pages: " + book.pages;
+
+    let haveRead = document.createElement("p");
+    if(book.read){
+        haveRead.innerHTML  = "read";
+        bookDiv.classList.add("read");
+    }else{
+        haveRead.innerHTML  = "not read";
+    }
+    bookDiv.appendChild(bookTitle);
+    bookDiv.appendChild(bookAuthor);
+    bookDiv.appendChild(bookPages);
+    bookDiv.appendChild(haveRead);
+    booksDiv.appendChild(bookDiv);
 }
