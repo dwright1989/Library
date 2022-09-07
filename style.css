@@ -142,4 +142,5 @@ input.large{
   .delete{
       float: right;
       padding-bottom: 2rem;
+      cursor: pointer;
   }

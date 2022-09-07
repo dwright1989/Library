@@ -38,6 +38,7 @@ addBookToLibrary(book6);
 
 
 function getLibrary(){
+    resetLibraryDOM();
     myLibrary.forEach(function (item, index) {
         addBookToDOM(item, index);
     });
@@ -75,7 +76,8 @@ function addBook(form){
     modal.style.display="none";
     let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
     let index = addBookToLibrary(book);
-    addBookToDOM(book, index);
+    //addBookToDOM(book, index);
+    getLibrary();
 }
 
 function addBookToDOM(book, index){
@@ -87,6 +89,10 @@ function addBookToDOM(book, index){
     deleteImage.src = "images/delete.png";
     deleteImage.classList.add("delete");
     deleteImage.id=index;
+
+    deleteImage.addEventListener("click", (event) => {
+        deleteBook((index));
+    });
     
     let bookTitle = document.createElement("h2");
     bookTitle.innerHTML  = book.title;
@@ -110,4 +116,25 @@ function addBookToDOM(book, index){
     bookDiv.appendChild(bookPages);
     bookDiv.appendChild(haveRead);
     booksDiv.appendChild(bookDiv);
+}
+
+function deleteBook(index){
+    // delete from the library array
+    deleteFromLibrary(index);
+    // delete from the DOM
+    //deleteFromDOM(index);
+}
+
+function deleteFromLibrary(index){
+    myLibrary.splice(index, 1);
+    console.log(myLibrary);
+}
+
+function resetLibraryDOM(){
+    let booksDIV = document.getElementById("books");
+    booksDIV.innerHTML = "";
+    let addBookButton = document.createElement("button");
+    addBookButton.id = "add-book-btn";
+    addBookButton.innerText = "+";
+    booksDIV.appendChild(addBookButton);
 }
