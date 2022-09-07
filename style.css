@@ -12,10 +12,10 @@ body{
 }
 
 :root{
-    --main-color: #0C0B0B;
-    --secondary-color: #A0A6AC;
-    --tertiary-color: #EE197F;
-    --added-color: #54EF46;
+    --main-color: #000000;
+    --secondary-color: #005B5D;
+    --tertiary-color: #FFE4E6;
+    --added-color: #FCB0B4;
     
 }
 
