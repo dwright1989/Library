@@ -80,6 +80,7 @@ function addBookToDOM(book, index){
     let booksDiv = document.getElementById("books");
     let bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
+    bookDiv.id = index;
 
     let deleteImage = document.createElement("img");
     deleteImage.src = "images/delete.png";
@@ -99,13 +100,8 @@ function addBookToDOM(book, index){
     let bookPages = document.createElement("p");
     bookPages.innerHTML  = "Pages: " + book.pages;
 
-    let haveRead = document.createElement("p");
-    if(book.read){
-        haveRead.innerHTML  = "read";
-        bookDiv.classList.add("read");
-    }else{
-        haveRead.innerHTML  = "not read";
-    }
+   
+    
 
     // Create DIV for the toggle
 
@@ -124,6 +120,17 @@ function addBookToDOM(book, index){
     labelToggle.classList.add("toggle");
     labelToggle.htmlFor = "switch" + index;
 
+    if(book.read){
+        bookDiv.classList.add("read");
+        inputToggle.checked = true;
+    }else{
+        inputToggle.checked = false;
+    }
+
+    inputToggle.addEventListener("click", (event) => {
+        changeReadStatus((index));
+    });
+
     toggleDIV.appendChild(readLabel);
     toggleDIV.appendChild(inputToggle);
     toggleDIV.appendChild(labelToggle);
@@ -135,7 +142,7 @@ function addBookToDOM(book, index){
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
-    bookDiv.appendChild(haveRead);
+    //bookDiv.appendChild(haveRead);
     bookDiv.appendChild(toggleDIV);
     booksDiv.appendChild(bookDiv);
 }
@@ -162,4 +169,22 @@ function resetLibraryDOM(){
         document.getElementById('myForm').reset();
     }
     booksDIV.appendChild(addBookButton);
+}
+
+function changeReadStatus(index){
+    // check current status
+    let bookDiv = document.getElementById(index);
+    let toggle = document.getElementById("switch"+index);
+    // get the book object
+    let book = myLibrary[index];
+    if(toggle.checked){
+        // add read class
+        bookDiv.classList.add("read");
+        book.read = true;
+    }else{
+        // remove read class
+        bookDiv.classList.remove("read");
+        book.read = false;
+    }
+    console.log("book: " + book.read);
 }
