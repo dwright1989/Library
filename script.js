@@ -73,7 +73,6 @@ function addBook(form){
     modal.style.display="none";
     let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
     let index = addBookToLibrary(book);
-    //addBookToDOM(book, index);
     getLibrary();
 }
 
@@ -107,18 +106,35 @@ function addBookToDOM(book, index){
     }else{
         haveRead.innerHTML  = "not read";
     }
+
+    let inputToggle = document.createElement("input");
+    inputToggle.id = "switch" + index;
+    inputToggle.classList.add("checkbox");
+    inputToggle.type = "checkbox";
+
+    let labelToggle = document.createElement("label");
+    labelToggle.classList.add("toggle");
+    labelToggle.htmlFor = "switch" + index;
+
+    let para = document.createElement("p");
+    para.innerHTML = "Read      Not Read";
+    labelToggle.appendChild(para);
+
+
+
     bookDiv.appendChild(deleteImage);
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
     bookDiv.appendChild(haveRead);
+    bookDiv.appendChild(inputToggle);
+    bookDiv.appendChild(labelToggle);
     booksDiv.appendChild(bookDiv);
 }
 
 function deleteBook(index){
     // delete from the library array
     deleteFromLibrary(index);
-    // delete from the DOM
     getLibrary();
 }
 
