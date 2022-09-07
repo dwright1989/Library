@@ -56,6 +56,7 @@ var submitBtn = document.getElementById("submitBtn");
 
 btn.onclick = function() {
   modal.style.display = "block";
+  document.getElementById('myForm').reset();
 }
 
 span.onclick = function() {
@@ -71,7 +72,7 @@ window.onclick = function(event) {
 
 function addBook(form){
     modal.style.display="none";
-    let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.value);
+    let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
     addBookToLibrary(book);
     addBookToDOM(book);
 }
