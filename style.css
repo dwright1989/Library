@@ -2,8 +2,8 @@
 
 html, body, div, h1{
     margin: 0;
-    font-family: 'Berkshire Swash', cursive;
-   /* font-family: 'Noto Sans JP', sans-serif;*/
+    /*font-family: 'Berkshire Swash', cursive;*/
+   font-family: 'Noto Sans JP', sans-serif;
    
 }
 
@@ -13,8 +13,8 @@ body{
 
 :root{
     --main-color: #000000;
-    --secondary-color: #005B5D;
-    --tertiary-color: #FFE4E6;
+    --secondary-color: #FFFFD0;
+    --tertiary-color: #BFA5A6;
     --added-color: #FCB0B4;
     
 }
@@ -22,7 +22,7 @@ body{
 h1{
     text-align: center;
     padding: 1rem;
-    font-size: 3.5rem;
+    font-size: 1.5rem;
 }
 
 #header{
@@ -64,12 +64,11 @@ h1{
 
 h2{
     text-align: center;
-    font-family: 'Berkshire Swash', cursive;
     text-decoration: underline;
 }
 
 .read{
-    background-color: var(--tertiary-color);
+    background-color: var(--secondary-color);
 }
 
 input.large{
