@@ -12,6 +12,26 @@ class Book{
         this.pages = pages
         this.read = read
       }
+
+      changeReadStatus(index){
+        // check current status
+        let bookDiv = document.getElementById(index);
+        let toggle = document.getElementById("switch"+index);
+        if(toggle.checked){
+            // add read class
+            bookDiv.classList.add("read");
+            this.read = true;
+        }else{
+            // remove read class
+            bookDiv.classList.remove("read");
+            this.read = false;
+        }
+    }
+
+    addBookToLibrary(){
+        myLibrary.push(this);
+        return myLibrary.length-1;
+    }
 }
 
 
@@ -24,17 +44,12 @@ let book5 = new Book("The Handmaid's Tale", "Margaret Atwood", 399, false);
 let book6 = new Book("Misery", "Stephen King", 619, true);
 
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-  return myLibrary.length-1;
-}
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
-addBookToLibrary(book5);
-addBookToLibrary(book6);
+book1.addBookToLibrary();
+book2.addBookToLibrary();
+book3.addBookToLibrary();
+book4.addBookToLibrary();
+book5.addBookToLibrary();
+book6.addBookToLibrary();
 
 
 function getLibrary(){
@@ -72,7 +87,7 @@ window.onclick = function(event) {
 function addBook(form){
     modal.style.display="none";
     let book = new Book(form.title.value, form.author.value, form.pages.value, form.read.checked);
-    let index = addBookToLibrary(book);
+    let index = book.addBookToLibrary();
     getLibrary();
 }
 
@@ -128,7 +143,7 @@ function addBookToDOM(book, index){
     }
 
     inputToggle.addEventListener("click", (event) => {
-        changeReadStatus((index));
+        book.changeReadStatus((index));
     });
 
     toggleDIV.appendChild(readLabel);
@@ -153,10 +168,6 @@ function deleteBook(index){
     getLibrary();
 }
 
-function deleteFromLibrary(index){
-    myLibrary.splice(index, 1);
-    console.log(myLibrary);
-}
 
 function resetLibraryDOM(){
     let booksDIV = document.getElementById("books");
@@ -171,20 +182,3 @@ function resetLibraryDOM(){
     booksDIV.appendChild(addBookButton);
 }
 
-function changeReadStatus(index){
-    // check current status
-    let bookDiv = document.getElementById(index);
-    let toggle = document.getElementById("switch"+index);
-    // get the book object
-    let book = myLibrary[index];
-    if(toggle.checked){
-        // add read class
-        bookDiv.classList.add("read");
-        book.read = true;
-    }else{
-        // remove read class
-        bookDiv.classList.remove("read");
-        book.read = false;
-    }
-    console.log("book: " + book.read);
-}
