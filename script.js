@@ -99,14 +99,7 @@ function addBookToDOM(book, index){
 
     let deleteImage = document.createElement("img");
     deleteImage.src = "images/delete.png";
-    deleteImage.classList.add("delete");
-    deleteImage.id=index;
 
-    deleteImage.addEventListener("click", (event) => {
-        deleteBook((index));
-    });
-    
-    let bookTitle = document.createElement("h2");
     bookTitle.innerHTML  = book.title;
 
     let bookAuthor = document.createElement("h4");
